@@ -19,6 +19,8 @@ public class Dropdown {
 			System.out.println(e);
 		}
 		driver.findElement(By.xpath("//*[@id=\"ctl00_mainContent_ddl_originStation1\"]/option[56]")).click();
+		driver.findElement(By.cssSelector(".ui-datepicker-trigger")).click();
+		driver.findElement(By.cssSelector(".ui-state-default.ui-state-highlight.ui-state-active")).click();
 	}
 
 }

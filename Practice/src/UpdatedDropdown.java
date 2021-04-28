@@ -17,6 +17,10 @@ public class UpdatedDropdown {
 		driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).click();
 		Assert.assertTrue(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
 
+		// .ui-state-default.ui-state-highlight.ui-state-active
+		
+		
+		
 //		System.out.println(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
 		
 		//count the number of checkboxes
