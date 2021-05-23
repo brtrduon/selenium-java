@@ -15,7 +15,7 @@ public class ecommerce {
 
 		int j = 0;
 
-		String[] itemsNeeded = { "Cucumber", "Brocolli", "Beetroot" };
+		String[] itemsNeeded = { "Cucumber", "Brocolli", "Beetroot", "Carrot" };
 
 		driver.get("https://rahulshettyacademy.com/seleniumPractise/");
 
@@ -34,9 +34,9 @@ public class ecommerce {
 			if (itemsNeededList.contains(formattedName)) {
 				j++;
 				// click on Add to Cart
-				driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(i).click();
+				driver.findElements(By.xpath("//div[@class='product-action']/button")).get(i).click();
 
-				if (j == 3) {
+				if (j == itemsNeeded.length) {
 					break;
 				}
 			}
