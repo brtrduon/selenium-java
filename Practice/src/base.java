@@ -6,19 +6,33 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ecommerce {
+public class base {
 
 	public static void main(String[] args) {
+
 		// TODO Auto-generated method stub
 		System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 
-		int j = 0;
-
-		String[] itemsNeeded = { "Cucumber", "Brocolli", "Beetroot", "Carrot" };
+		String[] itemsNeeded = { "Cucumber", "Brocolli", "Beetroot" };
 
 		driver.get("https://rahulshettyacademy.com/seleniumPractise/");
-
+		
+		try {
+			Thread.sleep(3000);			
+		} catch (InterruptedException err) {
+			System.out.print(err);
+		}
+		
+		addItems(driver, itemsNeeded);
+		driver.findElement(By.cssSelector("img[alt='Cart']")).click();
+		driver.findElement(By.xpath("//body[1]/div[1]/div[1]/header[1]/div[1]/div[3]/div[2]/div[2]/button[1]")).click();
+		driver.findElement(By.cssSelector("input.promoCode")).sendKeys("rahulshettyacademy");
+	}
+	
+	
+	public static void addItems(WebDriver driver, String[] itemsNeeded) {
+		int j = 0;
 		List<WebElement> products = driver.findElements(By.cssSelector("h4.product-name"));
 
 		for (int i = 0; i < products.size(); i++) {
@@ -41,7 +55,6 @@ public class ecommerce {
 				}
 			}
 		}
-
 	}
 
 }
