@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,21 +14,18 @@ public class base {
 		// TODO Auto-generated method stub
 		System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
 		String[] itemsNeeded = { "Cucumber", "Brocolli", "Beetroot" };
 
 		driver.get("https://rahulshettyacademy.com/seleniumPractise/");
 		
-		try {
-			Thread.sleep(3000);			
-		} catch (InterruptedException err) {
-			System.out.print(err);
-		}
-		
 		addItems(driver, itemsNeeded);
 		driver.findElement(By.cssSelector("img[alt='Cart']")).click();
 		driver.findElement(By.xpath("//body[1]/div[1]/div[1]/header[1]/div[1]/div[3]/div[2]/div[2]/button[1]")).click();
 		driver.findElement(By.cssSelector("input.promoCode")).sendKeys("rahulshettyacademy");
+		driver.findElement(By.cssSelector("button.promoBtn")).click();
+		System.out.println(driver.findElement(By.cssSelector("span.promoInfo")).getText());
 	}
 	
 	
